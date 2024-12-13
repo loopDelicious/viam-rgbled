@@ -1,0 +1,15 @@
+{
+  "$schema": "https://dl.viam.dev/module.schema.json",
+  "module_id": "joyce:rgb_led",
+  "visibility": "private",
+  "url": "",
+  "description": "Modular generic component: rgb_led",
+  "models": [
+    {
+      "api": "rdk:component:generic",
+      "model": "joyce:generic:rgb_led"
+    }
+  ],
+  "entrypoint": "./run.sh",
+  "first_run": ""
+}
