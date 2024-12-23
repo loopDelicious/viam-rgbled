@@ -1,10 +1,10 @@
 {
-  "module_name": "rgb_led",
+  "module_name": "rgb",
   "namespace": "joyce",
   "language": "python",
   "resource_type": "component",
   "resource_subtype": "generic",
-  "model_name": "rgb_led",
+  "model_name": "rgbled",
   "enable_cloud_build": false,
   "initialize_git": false,
   "generator_version": "0.1.0",
