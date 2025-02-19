@@ -17,7 +17,7 @@ To use this module, follow these instructions to [add a module from the Viam Reg
 - Click on the **+** icon in the left-hand menu and select **Component**.
 - Select the `generic` type, then select the `rgbled` module.
 - Enter a name for your component and click **Create**.
-- On the new component panel, copy and paste the following attribute template into your component’s **CONFIGURE** field. And select the board under the **Depends on** field.
+- On the new component panel, copy and paste the following attribute template into your component’s **CONFIGURE** field.
 
 ```json
 {
@@ -30,28 +30,29 @@ To use this module, follow these instructions to [add a module from the Viam Reg
 
 The following attributes are available for the `joyce:rgb:rgbled` component:
 
-| Name        | Type  | Inclusion | Description                            |
-| ----------- | ----- | --------- | -------------------------------------- |
-| `red` | string | Required | A string representing the physical pin on your board connected to the red lead of a common cathode RGB LED. The string must contain only digits, such as `"33"`  |
-| `blue_pin` | string | Required | A string representing the physical pin on your board connected to the blue lead of a common cathode RGB LED. The string must contain only digits, such as `"12"`  |
-| `green_pin` | string | Required | A string representing the physical pin on your board connected to the green lead of a common cathode RGB LED. The string must contain only digits, such as `"32"`  |
-| `board`     | string | Required | Name of the board (to access GPIO pin) according to the Viam app, such as `board-1` |
+| Name        | Type   | Inclusion | Description                                                                                                                                                       |
+| ----------- | ------ | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `red`       | string | Required  | A string representing the physical pin on your board connected to the red lead of a common cathode RGB LED. The string must contain only digits, such as `"33"`   |
+| `blue_pin`  | string | Required  | A string representing the physical pin on your board connected to the blue lead of a common cathode RGB LED. The string must contain only digits, such as `"12"`  |
+| `green_pin` | string | Required  | A string representing the physical pin on your board connected to the green lead of a common cathode RGB LED. The string must contain only digits, such as `"32"` |
+| `board`     | string | Required  | Name of the board (to access GPIO pin) according to the Viam app, such as `board-1`                                                                               |
+
 - ![configure attributes](./configLED.png)
 
 ### Do Command
+
 On the **CONTROL** tab, select your RGB LED component, and use the following DoCommands: `control_rgb_led` or `ripple` formatted like the following.
 
 ```json
 {
-    "control_rgb_led": {
-        "red": 0.8,
-        "green": 0.5,
-        "blue": 0.2,
-        "duration": 2.0
-    }
+  "control_rgb_led": {
+    "red": 0.8,
+    "green": 0.5,
+    "blue": 0.2,
+    "duration": 2.0
+  }
 }
-
-````
+```
 
 ```json
 {
@@ -60,6 +61,7 @@ On the **CONTROL** tab, select your RGB LED component, and use the following DoC
   }
 }
 ```
+
 ![do command](./doCommandLED.png)
 
 > [!NOTE]  
