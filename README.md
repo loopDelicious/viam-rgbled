@@ -32,7 +32,7 @@ The following attributes are available for the `joyce:rgb:rgbled` component:
 
 | Name        | Type   | Inclusion | Description                                                                                                                                                       |
 | ----------- | ------ | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `red`       | string | Required  | A string representing the physical pin on your board connected to the red lead of a common cathode RGB LED. The string must contain only digits, such as `"33"`   |
+| `red_pin`       | string | Required  | A string representing the physical pin on your board connected to the red lead of a common cathode RGB LED. The string must contain only digits, such as `"33"`   |
 | `blue_pin`  | string | Required  | A string representing the physical pin on your board connected to the blue lead of a common cathode RGB LED. The string must contain only digits, such as `"12"`  |
 | `green_pin` | string | Required  | A string representing the physical pin on your board connected to the green lead of a common cathode RGB LED. The string must contain only digits, such as `"32"` |
 | `board`     | string | Required  | Name of the board (to access GPIO pin) according to the Viam app, such as `board-1`                                                                               |
