@@ -64,7 +64,7 @@ class Rgbled(Generic, EasyResource):
 
         return super().reconfigure(config, dependencies)
     
-    async def control_rgb_led(self, red: float, green: float, blue: float, duration: float = 1.0):
+    async def control_rgb_led(self, red: float, green: float, blue: float, duration: Optional[float] = None):
         """Control the RGB LED with specified intensity for each color."""
         try:
             if not (0.0 <= red <= 1.0):
@@ -83,12 +83,14 @@ class Rgbled(Generic, EasyResource):
             await red_pin.set_pwm(red)
             await green_pin.set_pwm(green)
             await blue_pin.set_pwm(blue)
-            await asyncio.sleep(duration)
 
-            # Turn off the LED after the duration
-            await red_pin.set_pwm(0.0)
-            await green_pin.set_pwm(0.0)
-            await blue_pin.set_pwm(0.0)
+            if duration is not None:
+                await asyncio.sleep(duration)
+
+                # Only turn off if duration is specified
+                await red_pin.set_pwm(0.0)
+                await green_pin.set_pwm(0.0)
+                await blue_pin.set_pwm(0.0)
 
             self.logger.info("RGB LED control completed successfully.")
         except Exception as e:
@@ -111,10 +113,11 @@ class Rgbled(Generic, EasyResource):
                     red = args.get("red", 0.0)
                     green = args.get("green", 0.0)
                     blue = args.get("blue", 0.0)
-                    duration = args.get("duration", 1.0)
+                    duration = args.get("duration") # default to None
 
                     await self.control_rgb_led(red=red, green=green, blue=blue, duration=duration)
-                    result["control_rgb_led"] = f"RGB LED controlled with red={red}, green={green}, blue={blue} for {duration}s."
+                    result["control_rgb_led"] = f"RGB LED controlled with red={red}, green={green}, blue={blue}, duration={duration or 'indefinitely'}."
+
                 except Exception as e:
                     self.logger.error(f"Error in do_command (control_rgb_led): {e}")
                     result["control_rgb_led"] = f"Error: {str(e)}"

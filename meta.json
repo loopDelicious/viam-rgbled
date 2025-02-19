@@ -1,13 +1,13 @@
 {
   "$schema": "https://dl.viam.dev/module.schema.json",
-  "module_id": "joyce:rgb",
+  "module_id": "joyce:led",
   "visibility": "public",
   "url": "https://github.com/loopDelicious/viam-rgbled",
   "description": "Modular generic component: rgbled",
   "models": [
     {
       "api": "rdk:component:generic",
-      "model": "joyce:rgb:rgbled"
+      "model": "joyce:led:rgbled"
     }
   ],
   "entrypoint": "./run.sh",
