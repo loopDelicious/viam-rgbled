@@ -42,7 +42,7 @@ class Rgbled(Generic, EasyResource):
             if not fields["board"].HasField("string_value"):
                 raise Exception("Board name must be configured as a string.")
 
-        return []
+        return [str(name) for name in fields.values()]
 
     def reconfigure(
         self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
