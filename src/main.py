@@ -30,6 +30,7 @@ class Rgbled(Generic, EasyResource):
         as well as to return any implicit dependencies based on that `config`.
         """
         fields = config.attributes.fields
+        dependencies = []
 
         for pin in ["green_pin", "red_pin", "blue_pin"]:
             if pin in fields:
@@ -41,8 +42,9 @@ class Rgbled(Generic, EasyResource):
         if "board" in fields:
             if not fields["board"].HasField("string_value"):
                 raise Exception("Board name must be configured as a string.")
+            dependencies.append(fields["board"].string_value)
 
-        return [str(name) for name in fields.values()]
+        return dependencies
 
     def reconfigure(
         self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
